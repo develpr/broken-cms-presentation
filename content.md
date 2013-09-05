@@ -95,13 +95,13 @@ We need to setup Laravel so that it has a database connection, and while we're a
 
 `app/config/database.php` needs to have our database connection info:
 
-database: brokencms
-username: bieber
-password: fever
+	database: brokencms
+	username: bieber
+	password: fever
 
 ----
 
-now we need to drag into place the
+Let's put into place the files we need for the frontend/display layer (see [github](https://github.com/develpr/broken-cms-presentation/tree/master/laravel) for these files)
 
 1. stylesheets, images, javascript
 2. views (a bit more on this later)

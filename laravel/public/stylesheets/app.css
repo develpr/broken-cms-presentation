@@ -1,0 +1,27 @@
+.add-content{
+	background-color:#cad7e5;
+	font-size:3em;
+	padding:.5em;
+	opacity: .6;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+	margin:15px 0 0 0;
+}
+
+.add-content:hover{
+	opacity:1;
+}
+
+.blocks, .blocks li{
+	list-style:none;
+}
+
+.blocks li{
+	margin-bottom:10px;
+}
+
+.empty{
+	min-height:2em;
+	border:3px solid #a4c5e5;
+}
