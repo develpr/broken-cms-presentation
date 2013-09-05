@@ -13,15 +13,16 @@
 	opacity:1;
 }
 
-.blocks, .blocks li{
+.blocks, .blocks div{
 	list-style:none;
 }
 
-.blocks li{
-	margin-bottom:10px;
+.blocks div{
+	margin-bottom:15px;
+	margin-top:15px;
 }
 
 .empty{
 	min-height:2em;
-	border:3px solid #a4c5e5;
+	border:1px solid #a4c5e5;
 }

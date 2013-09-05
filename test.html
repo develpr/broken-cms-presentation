@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>test</title>
-    <link rel="stylesheet" href="/laravel/public/stylesheets/foundation.min.css">
-    <link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
+	<meta charset="utf-8">
+	<title>test</title>
+	<link rel="stylesheet" href="/laravel/public/stylesheets/foundation.min.css">
+	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
+	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
+	<link rel="stylesheet" href="/laravel/public/stylesheets/aloha.css">	
 	<link rel="stylesheet" href="/laravel/public/stylesheets/app.css">	
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 </head>
 
 <body>
 	<div class="title">
 	</div>
 	<div class="content main">
-		<ul class="blocks">
-		</ul>
+		<div class="blocks">
+		</div>
 	</div>
 	<div class="row">
 		<a class="large-12 columns text-center add-content">
@@ -25,8 +27,18 @@
 	</div>
 	
  	<script src="/laravel/public/scripts/vendor/jquery-1.10.2.min.js"></script>
-	<script src="/laravel/public/scripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="/laravel/public/scripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>	
     <script src="/laravel/public/scripts/vendor/foundation.min.js"></script>
+	
+	<script src="/laravel/public/scripts/vendor/jquery-1.7.2.js"></script>
+	<script>
+	Aloha = window.Aloha || {};
+	Aloha.settings = Aloha.settings || {};
+	// Restore the global $ and jQuery variables of your project's jQuery
+	Aloha.settings.jQuery = window.jQuery.noConflict(true);
+	</script>
+	<script src="/laravel/public/scripts/vendor/require.js"></script>
+	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link"></script>	
 
 	<script src="/laravel/public/scripts/app.js"></script>
 </body>

@@ -5,8 +5,9 @@ $(document).foundation();
 var broken = {};
 
 broken.breakContent = function(){
-	$(".content.main .blocks").append('<li class="empty block row editable"></li>');
+	$(".content.main .blocks").append('<div class="empty block row editable"></div>');
 	$( ".blocks" ).sortable( "refresh" );
+	Aloha.jQuery('.editable').aloha();
 }
 
 $(function(){
@@ -25,6 +26,6 @@ $(function(){
  *		setup the aloha editor
  */ 
 
-// Aloha.ready( function() {
-// 	Aloha.jQuery('.editable').aloha();
-// });
+Aloha.ready( function() {
+	Aloha.jQuery('.editable').aloha();
+});
