@@ -14,7 +14,10 @@
 </head>
 
 <body>
-	<div class="title">
+	<div class="title row">
+		<div class="large-12">
+			<h1>This is a title</h1>
+		</div>
 	</div>
 	<div class="content main">
 		<div class="blocks">
@@ -36,9 +39,10 @@
 	Aloha.settings = Aloha.settings || {};
 	// Restore the global $ and jQuery variables of your project's jQuery
 	Aloha.settings.jQuery = window.jQuery.noConflict(true);
+	Aloha.settings.sidebar = { disabled: true };
 	</script>
 	<script src="/laravel/public/scripts/vendor/require.js"></script>
-	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link"></script>	
+	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/link"></script>	
 
 	<script src="/laravel/public/scripts/app.js"></script>
 </body>
