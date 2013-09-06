@@ -16,9 +16,9 @@ We are going to learn about Laravel.
 
 ###OK, cool, now let's build a new CMS!
 
-We are going to build a ***powerful*** CMS, and we will (we'll try, by *george* we will try) do it in the next 20 minutes, from scratch.
+We are going to build a ***powerful*** CMS, and we will (we will **try**) do it in the next 20 minutes, from scratch.
 
-We could talk for a long time about lots of things, but hopefully this will give an idea for the FEEL of working with Laravel.
+We could talk for a long time about lots of things, but hopefully this will give an idea for the FEEL of working with Laravel and a general idea of how you can use it. 
 
 --------
 

@@ -1,3 +1,38 @@
+
+.brokencms, .broken-cms, .broken-type{
+/*	font-family: 'Sue Ellen Francisco', cursive;*/
+/*	font-family: 'Quicksand', sans-serif;*/
+	font-family: 'Amatic SC', cursive;
+}
+
+nav h2.brokencms a{
+	font-size:.9em;
+	color:white;
+	position:relative;
+	left:6px;
+	top:-5px;
+}
+
+
+h1.brokencms{
+	margin-bottom:0;
+	color:white;
+}
+.special-login{
+	text-align:left;
+	width:340px;
+	margin:0 auto;
+	margin-top:150px;
+}
+
+.special-login input{
+	border-radius:3px;
+}
+
+.brokencms.large{
+	font-size:7.4em;
+}
+
 .add-content{
 	background-color:#cad7e5;
 	font-size:3em;
@@ -24,9 +59,365 @@
 
 .empty{
 	min-height:1.5em;
-	background:#d8ffc9;
+	background:#fcc0b9;
 }
 
 .moveme{
 
 }
+
+body, html{
+	background-color:#262626;
+}
+
+
+/*
+••••••••••••••••••••••••
+
+Powered by Type & Grids™
+www.typeandgrids.com
+
+••••••••••••••••••••••••
+*/
+
+#sitePreloader { background-color: #000000; } /* Preloader GIF created with http://preloaders.net */
+/*body { background-color: #f96e5b; }*/
+html,body { background: #f96e5b url("/laravel/public/img/grid_24.png") repeat; }
+.thumbnailMask { background-image: url("../../images/masks/f96e5b_01.png"); }
+header { border-color: #321612; }
+
+.currentPage, button.currentPage:hover { color: #ba5345 !important; }
+nav ul li button:hover, nav ul li button:active, nav ul li button:focus, nav ul li a:hover, nav ul li a:active, nav ul li a:focus, #heroNav a:hover, #heroNav a:visited:hover, #heroNav a:active, #heroNav a:focus, #formSubmit:hover, .contentModule a:hover, .contentModule a:visited:hover, .contentModule a:active, .contentModule a:focus { color: #ffffff; }
+hr, .projectInfo h4, .projectNav, .projectInfo, .linedList, .projectInfo li, .projectInfo p:nth-last-child(2), .linedList li, nav, blockquote, #formField, #content #heroNav ul li, #footerLinks li, #heroNav, .contentModule, .eight:nth-child(4n) .contentModule:last-child, .eight:nth-of-type(1) .contentModule:last-child { border-color: #fba99d; }
+#overview h3 { color: #ffffff; }
+.projectThumbnailHover { background-color: rgba(50, 22, 18, 0.95); }
+.projectThumbnailHover h4 { color: #ffffff; }
+.projectThumbnailHover h5 { color: #ffffff; }
+.projectInfo h4 { color: #4a211b; }
+.projectNav { color: #4a211b; }
+.projectNavClose button, .projectNavButtons button, .projectNavEnlarge button, .projectNavCounter, #formSubmit, #formField { color: #4a211b; }
+.projectNav button:hover, .projectNav button:active, .projectNav button:focus { color: #ffffff; }
+.projectNavInactive, button.projectNavInactive, button.projectNavInactive:hover, button.projectNavInactive:active { color: #ba5345 !important; }
+p, li, .projectInfo p, .projectInfo li, blockquote, blockquote p, blockquote cite { color: #4a211b; }
+p strong, .projectInfo strong, li strong { color: #4a211b; }
+footer p { color: #4a211b; }
+footer a { color: #4a211b; }
+h1, h2, h3, h4, h5, h6, #faq p:first-child, .contentModule a, .contentModule a:visited { color: #321612; }
+#heroNav a, #heroNav a:visited { color: #321612; }
+
+a:hover, a:active, a:focus { color: #ffffff; }
+#formField { background: #fa7d6c; }
+#formField:focus { background: #fcb7ad; }
+
+#logo h1, #logoDetailView h1 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 36px;
+	line-height: 1.5;
+	letter-spacing: -0.1em;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: optimizeLegibility;
+}
+
+#logo h2, #logoDetailView h2 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 14px;
+	line-height: 1.2;
+	letter-spacing: -0.06em;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+#overview h3 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 28px;
+	line-height: 1.3;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: optimizeLegibility;
+}
+
+.projectThumbnailHover h4 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 18px;
+	line-height: 1.2;
+	letter-spacing: -0.1em;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+.projectThumbnailHover h5 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 12px;
+	line-height: 1.2;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+.projectInfo h4 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 14px;
+	line-height: 1.2;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+.projectNavCounter {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 12px;
+	line-height: 1.2;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+.projectNavButtons button {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 11px;
+	line-height: 1.2;
+	letter-spacing: 0.07em;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-rendering: auto;
+}
+
+.projectNavClose button, .projectNavEnlarge button {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 11px;
+	line-height: 1.2;
+	letter-spacing: 0.07em;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-rendering: auto;
+}
+
+p, li, .projectInfo p, .projectInfo li {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 14px;
+	line-height: 1.3;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+footer p {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 12px;
+	line-height: 1.2;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+blockquote, blockquote p {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: italic;
+	font-size: 14px;
+	line-height: 1.4;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+blockquote cite {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 14px;
+	line-height: 1.3;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+	letter-spacing: -0.05em;
+	text-transform: none;
+}
+
+#heroNav a {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 16px;
+	line-height: 1.2;
+	letter-spacing: 0;
+	text-decoration: underline;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+#formField {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 14px;
+	line-height: 1.2;
+	letter-spacing: 0;
+	text-decoration: none;
+	text-transform: none;
+	text-rendering: auto;
+}
+
+#formSubmit {
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+    font-style: normal;
+	font-size: 12px;
+	line-height: 1.2;
+	letter-spacing: 0.09em;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-rendering: auto;
+}
+
+/*===================================================================================================
+4) Media query adjustments
+===================================================================================================*/
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (max-width: 959px) {
+		
+		nav ul li a, nav ul li *, nav ul li span, #detailViewBack {
+			font-size: 14px;
+		}
+		
+		nav {
+			padding-top: 41px;
+		}
+		
+	}
+
+	/* Tablet portrait size to standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		
+		.special-login{
+			margin-top:50px;
+		}
+		
+		.projectThumbnailHover h4 {
+			font-size: 14px;
+		}
+		
+		.projectThumbnailHover h5 {
+			font-size: 11px;
+			padding-top: 57px;
+		}
+		
+	}
+
+	/* All mobile sizes (devices and browser) */
+	@media only screen and (max-width: 767px) {
+		
+		.special-login{
+			margin-top:inherit;
+		}
+		
+		
+		#logo h1, #logoDetailView h1 {
+			line-height: 1;
+		}
+		
+		#logo h2, #logoDetailView h2 {
+			margin-top: -12px;
+		}
+		
+		header {
+			padding-top: 40px;
+		}
+		
+		nav {
+			padding-top: 10px;
+			margin-bottom: -10px;
+		}
+		
+		#overview {
+			padding-bottom: 0px;
+		}
+		
+		#overview h3 {
+			font-size: 30px;
+		}
+		
+		footer p {
+			font-size: 14px;
+		}
+		
+	}
+
+	/* Mobile landscape size to tablet portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		
+		
+		
+	}
+
+	/* Mobile portrait size to mobile landscape size (devices and browsers) */
+	@media only screen and (max-width: 479px) {
+		
+		.special-login{
+			text-align:left;
+			width:90%;
+			margin-top:inherit;
+
+		}
+		
+		#logo h1, #logoDetailView h1 {
+			font-size: 30px;
+		}
+		
+		#logo h2, #logoDetailView h2 {
+			font-size: 14px;
+			margin-top: -12px;
+		}
+		
+		#overview h3 {
+			font-size: 24px;	
+		}
+		
+		.projectThumbnailHover h4 {
+			font-size: 14px;
+		}
+		
+		.projectThumbnailHover h5 {
+			font-size: 11px;
+			padding-top: 57px;
+		}
+		
+	}

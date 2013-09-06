@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="/laravel/public/stylesheets/foundation.min.css">
 	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
 	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
-	<link rel="stylesheet" href="/laravel/public/stylesheets/aloha.css">	
+	<link rel="stylesheet" href="/laravel/public/stylesheets/aloha.css">
+	<link href='http://fonts.googleapis.com/css?family=Quicksand:300|Amatic+SC' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" href="/laravel/public/stylesheets/app.css">	
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,6 +15,40 @@
 </head>
 
 <body>
+	<div class="row">
+		<div class="large-12">
+			<nav class="top-bar">
+			  <ul class="title-area">
+			    <!-- Title Area -->
+			    <li class="name">
+			      <h2 class="brokencms"><a href="#">Broken CMS</a></h2>
+			    </li>
+			    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+			    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+			  </ul>
+			  <section class="top-bar-section">			    
+			    <!-- Right Nav Section -->
+			    <ul class="right">
+			      <li class="divider hide-for-small"></li>
+			      <li class="has-dropdown"><a href="#">Pages</a>
+			        <ul class="dropdown">
+			          <li><label>$this</label></li>			          
+			          <li><a href="#">delete</a></li>
+			          <li class="divider"></li>
+			          <li><label>GLOBAL</label></li>
+			          <li><a href="#">new</a></li>
+			        </ul>
+			      </li>
+				  <li class="has-dropdown"><a href="#">/me</a>		
+  			        <ul class="dropdown">
+  			          <li><a href="/logout">logout</a></li>
+  			        </ul>
+  			      </li>	      
+			    </ul>
+			  </section>
+			</nav>
+		</div>
+	</div>
 	<div class="title row">
 		<div class="large-12">
 			<h1 class="editable" id="title">This is a title</h1>
@@ -42,8 +77,8 @@
 	Aloha.settings.sidebar = { disabled: true };
 	</script>
 	<script src="/laravel/public/scripts/vendor/require.js"></script>
-	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/link"></script>	
-
+	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/link"></script>
 	<script src="/laravel/public/scripts/app.js"></script>
+	
 </body>
 </html>
