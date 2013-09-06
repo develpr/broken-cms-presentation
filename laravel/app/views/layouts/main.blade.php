@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>test</title>
+	@yield('title')
 	<link rel="stylesheet" href="/laravel/public/stylesheets/foundation.min.css">
 	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
 	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
+	@if(Auth::check())
 	<link rel="stylesheet" href="/laravel/public/stylesheets/aloha.css">
+	@endif
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:300|Amatic+SC' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" href="/laravel/public/stylesheets/app.css">	
 	<!--[if IE]>
@@ -15,6 +17,7 @@
 </head>
 
 <body>
+	@if(Auth::check())
 	<div class="row">
 		<div class="large-12">
 			<nav class="top-bar">
@@ -33,10 +36,10 @@
 			      <li class="has-dropdown"><a href="#">Pages</a>
 			        <ul class="dropdown">
 			          <li><label>$this</label></li>			          
-			          <li><a href="#">delete</a></li>
+			          <li><a href="#" id="deletePage">delete</a></li>
 			          <li class="divider"></li>
 			          <li><label>GLOBAL</label></li>
-			          <li><a href="#">new</a></li>
+			          <li><a href="#" id="newPage">new</a></li>
 			        </ul>
 			      </li>
 				  <li class="has-dropdown"><a href="#">/me</a>		
@@ -49,22 +52,13 @@
 			</nav>
 		</div>
 	</div>
-	<div class="title row">
-		<div class="large-12">
-			<h1 class="editable" id="title">This is a title</h1>
-		</div>
-	</div>
-	<div class="content main">
-		<div class="blocks">
-		</div>
-	</div>
-	<div class="row">
-		<a class="large-12 columns text-center add-content" id="main">
-			<i class="foundicon-plus"></i>
-		</a>
-	</div>
+	@endif
 
+	@yield('content')
 	
+	<div class="loader" style="display:none;"><div class="panic">&nbsp;</div></div>
+		
+	@if(Auth::check())
  	<script src="/laravel/public/scripts/vendor/jquery-1.10.2.min.js"></script>
 	<script src="/laravel/public/scripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>	
     <script src="/laravel/public/scripts/vendor/foundation.min.js"></script>
@@ -79,6 +73,8 @@
 	</script>
 	<script src="/laravel/public/scripts/vendor/require.js"></script>
 	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/link"></script>
+	@endif
+	@yield('scripts')
 	<script src="/laravel/public/scripts/app.js"></script>
 	
 </body>

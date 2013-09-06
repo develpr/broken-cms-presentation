@@ -18,6 +18,30 @@ h1.brokencms{
 	margin-bottom:0;
 	color:white;
 }
+
+.brokencms.large{
+	font-size:7.4em;
+}
+
+.loader{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#222222;
+	
+}
+
+.loader .panic{
+	background: #222222 url('/laravel/public/img/loader.gif') top center no-repeat;
+	margin-top:150px;
+	height:100%;
+	width:689px;
+	margin:140px auto;
+	background-size: contain;
+}
+
 .special-login{
 	text-align:left;
 	width:340px;
@@ -29,9 +53,6 @@ h1.brokencms{
 	border-radius:3px;
 }
 
-.brokencms.large{
-	font-size:7.4em;
-}
 
 .add-content{
 	background-color:#cad7e5;
@@ -383,13 +404,21 @@ h1, h2, h3, h4, h5, h6 {
 
 	/* Mobile landscape size to tablet portrait (devices and browsers) */
 	@media only screen and (min-width: 480px) and (max-width: 767px) {
-		
+		.loader .panic{
+			width:85%;
+			margin:65px auto;
+		}
 		
 		
 	}
 
 	/* Mobile portrait size to mobile landscape size (devices and browsers) */
 	@media only screen and (max-width: 479px) {
+		
+		.loader .panic{
+			width:90%;
+			margin:25px auto;
+		}
 		
 		.special-login{
 			text-align:left;
