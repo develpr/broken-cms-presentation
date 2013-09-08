@@ -295,6 +295,9 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 	public function store()
 	{
 		$page = new Page;
+		
+		$page->save();
+		
 		return Response::json($page, 201);
 	}
 
@@ -302,9 +305,17 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 
 	public function show($id)
 	{
-		$page = Page::find($id);
-		return Response::json($page, 200);
+		$slug = Input::get('slug');
+	
+		$page = Page::where('id', '=', $id)->where('slug', '=', $slug)->first();
+	
+		if(!$page)
+			return Response::json(array('error' => "This page was not found"), 404);
+		else
+			return Response::json($page, 200);
+		
 	}
+
 
 	public function update($id)
 	{
@@ -314,6 +325,7 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 			$page->slug = Str::slug($page->title);
 		}
 	}
+
 
 	public function destroy($id)
 	{
@@ -325,7 +337,7 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 	public function index()
 	{
 		if(!Input::has('page_id'))
-			return Response::json(Content::all(), 200);
+			return Response::json(Content::all(), 200);	
 		$contents = Content::where('page_id', '=', Input::get('page_id'))->orderBy('position', 'asc')->orderBy('positioned_at', 'desc')->get();
 		return Response::json($contents, 200);
 	}
@@ -349,15 +361,20 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 	public function update($id)
 	{
 		$content = Content::find($id);
+		
 		if(Input::has('content') && Input::get('content') != $content->content)
 			$content->content = Input::get('content');
+			
 		if(Input::has('position') && Input::get('position') != $content->position)
 		{
 			$content->position = Input::get('position');
 			$content->positioned_at = date("Y-m-d H:i:s", time()-(60*60*7));
 		}
+		
 		$content->save();
+		
 		return Response::json($content, 200);
+		
 	}
 
 --------
@@ -377,5 +394,56 @@ To the routes.php file.
 
 We also want to handle login, logout, a home page, and also a route that will display a particular Page and it's Content.
 
-One great feature of Laravel is that we don't need to create a seperate controller for every little route that we have. We'll handle 
+One great feature of Laravel is that we don't need to create a seperate controller for every little route that we have.
 
+----
+
+First, showing the login page:
+
+	Route::get('/login', function(){
+		return View::make('login');
+	});
+
+Then processing the login
+
+	Route::post('/login', function(){
+		if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password'))))
+		{
+			return Redirect::to('/');
+		}
+	});
+
+and loggin out
+
+	
+	Route::get('/logout', function(){
+		Auth::logout();
+		return Redirect::to('/');
+	});
+	
+	
+
+----
+
+And finally, the most complicated route, handling the actual viewing of a page and it's content. Note here that we are getting the page and content data by calling the API that we created directly.
+
+
+	Route::get('/page/{page}/{slug?}', function($page, $slug = ''){
+		
+		$api = new ApiConnector();
+		
+		$page = $api->get('/api/v1/pages/' . $page . '?slug=' . $slug);
+		
+		$contents = array();
+		
+		if($api->getStatusCode() != '404')
+			$contents = $api->get('/api/v1/contents?page_id=' . $page->id);
+		else
+			return Redirect::to('/');
+			
+		if(Auth::check())
+			return View::make('page-edit')->with(array('page' => $page, 'contents' => $contents));
+		else
+			return View::make('edit')->with(array('page' => $page, 'contents' => $contents));
+			
+	});
