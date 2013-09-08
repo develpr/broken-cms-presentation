@@ -1,3 +1,5 @@
+@extends('layouts.main')
+
 @section('title')
 <title>404 - Broken CMS Sample Package Not Found</title>
 @stop

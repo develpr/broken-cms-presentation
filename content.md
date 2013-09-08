@@ -217,7 +217,7 @@ A user might have a
     $table->integer('position');
     $table->integer('page_id');
     $table->text('content');
-    $table->timestamp('sorted_at');
+    $table->timestamp('positioned_at');
 	$table->timestamps();
     $table->softDeletes();
 
@@ -248,6 +248,12 @@ Laravel "gives" us a User model out of the box, so we only need to make the Cont
 	
 	class Page extends Eloquent{
 	    protected $table = 'pages';
+		
+		public function contents()
+		{
+			$this->hasMany('Broken\Content');
+		}
+				
 	}
 	
 
@@ -261,10 +267,115 @@ Laravel "gives" us a User model out of the box, so we only need to make the Cont
 	
 	class Content extends Eloquent{
 	    protected $table = 'contents';
+		
+		public function page()
+		{
+			$this->belongsTo('Broken\Page');
+		}
 	}
 	
 
 
 ###5. Do even more programming - *Controllers*
 
-> *Controllers* handle requests when they come in from a user (first they are *routed* to the controller, which we'll handle in a second). They communicated between the *models* and the *views*. 
+> *Controllers* handle requests when they come in from a user (first they are *routed* to the controller, which we'll handle in a second). They communicated between the *models* and the *views*.
+
+We already used `artisan` to automatically create the basic controller stubs. Because e want to build Broken CMS on top of an API, we want to be able to handle various web requests (GET/POST/PUT/DELETE) in our controllers. 
+
+----
+
+####Page
+
+	public function index()
+	{
+		//Get a list of pages
+		return Response::json(Page::all());
+	}
+
+	public function store()
+	{
+		$page = new Page;
+		return Response::json($page, 201);
+	}
+
+----
+
+	public function show($id)
+	{
+		$page = Page::find($id);
+		return Response::json($page, 200);
+	}
+
+	public function update($id)
+	{
+		$page = Page::find($id);
+		if(Input::has('title') && Input::get('title') != $page->title){
+			$page->title = Input::get('title');
+			$page->slug = Str::slug($page->title);
+		}
+	}
+
+	public function destroy($id)
+	{
+		Page::destroy($id);
+	}
+
+####Contents
+
+	public function index()
+	{
+		if(!Input::has('page_id'))
+			return Response::json(Content::all(), 200);
+		$contents = Content::where('page_id', '=', Input::get('page_id'))->orderBy('position', 'asc')->orderBy('positioned_at', 'desc')->get();
+		return Response::json($contents, 200);
+	}
+
+	public function store()
+	{
+		$content = new Content;
+		$content->position = Input::get('position');
+		$content->page_id = Input::get('page_id');
+		$content->save();
+		return Response::json($content, 201);
+	}
+
+----
+
+	public function show($id)
+	{
+		return Content::find($id);
+	}
+
+	public function update($id)
+	{
+		$content = Content::find($id);
+		if(Input::has('content') && Input::get('content') != $content->content)
+			$content->content = Input::get('content');
+		if(Input::has('position') && Input::get('position') != $content->position)
+		{
+			$content->position = Input::get('position');
+			$content->positioned_at = date("Y-m-d H:i:s", time()-(60*60*7));
+		}
+		$content->save();
+		return Response::json($content, 200);
+	}
+
+--------
+
+###6. Routes (last step!)
+
+> Routes tell Laravel how to handle a particular request from the web browser. For example, it will tell Laravel to send a user to the login page if it sees the /login URL.
+
+Laravel automatically can handle "resourceful" routes for our API endpoints (Contents, Pages, Users), so that is easy to setup by simply adding
+
+	Route::resource('api/v1/contents', 'ContentController');
+	Route::resource('api/v1/pages', 'PageController');
+
+To the routes.php file.
+
+----
+
+We also want to handle login, logout, a home page, and also a route that will display a particular Page and it's Content.
+
+One great feature of Laravel is that we don't need to create a seperate controller for every little route that we have. We'll handle 
+

@@ -3,14 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	@yield('title')
-	<link rel="stylesheet" href="/laravel/public/stylesheets/foundation.min.css">
-	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
-	<link rel="stylesheet" href="/laravel/public/stylesheets/general_foundicons.css">	
+	<link rel="stylesheet" href="/stylesheets/foundation.min.css">
+	<link rel="stylesheet" href="/stylesheets/general_foundicons.css">	
+	<link rel="stylesheet" href="/stylesheets/general_foundicons.css">	
 	@if(Auth::check())
-	<link rel="stylesheet" href="/laravel/public/stylesheets/aloha.css">
+	<link rel="stylesheet" href="/stylesheets/aloha.css">
 	@endif
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:300|Amatic+SC' rel='stylesheet' type='text/css'>	
-	<link rel="stylesheet" href="/laravel/public/stylesheets/app.css">	
+	<link rel="stylesheet" href="/stylesheets/app.css">	
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -56,14 +56,14 @@
 
 	@yield('content')
 	
-	<div class="loader" style="display:none;"><div class="panic">&nbsp;</div></div>
+	<div id="broken-loader" style="display:none;"><div class="panic">&nbsp;</div></div>
 		
 	@if(Auth::check())
- 	<script src="/laravel/public/scripts/vendor/jquery-1.10.2.min.js"></script>
-	<script src="/laravel/public/scripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>	
-    <script src="/laravel/public/scripts/vendor/foundation.min.js"></script>
+ 	<script src="/scripts/vendor/jquery-1.10.2.min.js"></script>
+	<script src="/scripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>	
+    <script src="/scripts/vendor/foundation.min.js"></script>
 	
-	<script src="/laravel/public/scripts/vendor/jquery-1.7.2.js"></script>
+	<script src="/scripts/vendor/jquery-1.7.2.js"></script>
 	<script>
 	Aloha = window.Aloha || {};
 	Aloha.settings = Aloha.settings || {};
@@ -71,11 +71,11 @@
 	Aloha.settings.jQuery = window.jQuery.noConflict(true);
 	Aloha.settings.sidebar = { disabled: true };
 	</script>
-	<script src="/laravel/public/scripts/vendor/require.js"></script>
-	<script src="/laravel/public/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/link"></script>
+	<script src="/scripts/vendor/require.js"></script>
+	<script src="/scripts/vendor/aloha.js" data-aloha-plugins="common/ui,common/format,common/link"></script>
 	@endif
+	<script src="/scripts/app.js"></script>
 	@yield('scripts')
-	<script src="/laravel/public/scripts/app.js"></script>
 	
 </body>
 </html>

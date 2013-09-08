@@ -1,5 +1,7 @@
+@extends('layouts.main')
+
 @section('title')
-<title>404 - Login Not Found
+<title>404 - Login Not Found</title>
 @stop
 
 @section('content')

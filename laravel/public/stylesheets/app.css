@@ -23,7 +23,7 @@ h1.brokencms{
 	font-size:7.4em;
 }
 
-.loader{
+#broken-loader{
 	position:fixed;
 	top:0;
 	left:0;
@@ -33,8 +33,8 @@ h1.brokencms{
 	
 }
 
-.loader .panic{
-	background: #222222 url('/laravel/public/img/loader.gif') top center no-repeat;
+#broken-loader .panic{
+	background: #222222 url('/img/loader.gif') top center no-repeat;
 	margin-top:150px;
 	height:100%;
 	width:689px;
@@ -103,8 +103,8 @@ www.typeandgrids.com
 
 #sitePreloader { background-color: #000000; } /* Preloader GIF created with http://preloaders.net */
 /*body { background-color: #f96e5b; }*/
-html,body { background: #f96e5b url("/laravel/public/img/grid_24.png") repeat; }
-.thumbnailMask { background-image: url("../../images/masks/f96e5b_01.png"); }
+html,body { background: #f96e5b url("/img/grid_24.png") repeat; }
+
 header { border-color: #321612; }
 
 .currentPage, button.currentPage:hover { color: #ba5345 !important; }

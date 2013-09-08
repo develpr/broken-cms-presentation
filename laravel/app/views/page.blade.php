@@ -1,3 +1,5 @@
+@extends('layouts.main')
+
 @section('title')
 <title>{{$page->title}}</title>
 @stop

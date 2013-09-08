@@ -1,3 +1,5 @@
+@extends('layouts.main')
+
 @section('title')
 <title>{{$page->title}}</title>
 @stop
@@ -11,13 +13,14 @@
 <div class="content main">
 	<div class="blocks">
 		@foreach($contents as $content)
-		<div data-content-id="'+result.id+'" class="<?php echo strlen(trim($content->content)) == 0 ? 'empty' : ''; ?> block row">			
+		<div data-content-id="{{$content->id}}" class="<?php echo strlen(trim($content->content)) == 0 ? 'empty' : ''; ?> block row">
+			<div class="moveme right"><i class="foundicon-up-arrow"></i>
+				<i class="foundicon-down-arrow"></i>
+			</div>			
 			<div class="editable">
 				{{$content->content}}
 			</div>
-			<div class="moveme right"><i class="foundicon-up-arrow"></i>
-				<i class="foundicon-down-arrow"></i>
-			</div>
+
 		</div>
 		@endforeach
 	</div>
@@ -32,6 +35,6 @@
 @section('scripts')
 <script>
 var broken = window.broken || {};
-broken.page = {{$page->id}}
+broken.page = {{$page->id}};
 </script>
 @stop

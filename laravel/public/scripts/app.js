@@ -46,7 +46,7 @@ broken.breakGroundOnNewContent = function(locationClass){
 	var request = $.ajax({
 		url: "/api/v1/contents",
 		type: "POST",
-		data: { position:position, page:broken.page },
+		data: { position:position, page_id:broken.page },
 		dataType: "json"
 	});
  
@@ -54,7 +54,7 @@ broken.breakGroundOnNewContent = function(locationClass){
 		broken.loader(false);
 		//if a new item was created
 		if(xhr.status == 201){
-			$(".content."+locationClass+" .blocks").append('<div data-content-id="'+result.id+'" class="empty block row"><div class="editable"></div><div class="moveme right"><i class="foundicon-up-arrow"></i><i class="foundicon-down-arrow"></i></div></div>');
+			$(".content."+locationClass+" .blocks").append('<div data-content-id="'+result.id+'" class="empty block row"><div class="moveme right"><i class="foundicon-up-arrow"></i><i class="foundicon-down-arrow"></i></div><div class="editable"></div></div>');
 			Aloha.jQuery('.editable').aloha();			
 		}
 	});
@@ -76,7 +76,7 @@ broken.breakTitleChange = function($title){
 	var newTitle = $title.html();
 
 	var request = $.ajax({
-		url: "/api/v1/pages/" . broken.page,
+		url: "/api/v1/pages/" + broken.page,
 		type: "PUT",
 		data: { title:newTitle, '_method':'put' },
 		dataType: "json"
@@ -85,7 +85,7 @@ broken.breakTitleChange = function($title){
 	request.done(function(result, textStatus, xhr) {
 		broken.loader(false);
 		//ok, we updated the title, let's push the history state		
-		history.replaceState({}, result.title, 'page/' + broken.page + '/' + result.slug);
+		history.replaceState({}, result.title, '/page/' + broken.page + '/' + result.slug);
 	});
  
 	request.fail(function(jqXHR, textStatus) {
@@ -101,7 +101,7 @@ broken.breakTitleChange = function($title){
 broken.breakPositionUpdate = function(event, ui){
 	
 	//todo: figure out how to get the actual element we want from this
-	$element = ui;	
+	$element = ui.item;
 	
 	broken.breakContentUpdate($element, true);	
 	
@@ -118,10 +118,10 @@ broken.breakContentUpdate = function($content, updatePosition){
 	broken.loader(true);
 	
 	var id = $content.data('content-id');	
-	var updatedContent $content.find('block').html(); 
-	var currentPosition = $(".content."+locationClass+" .blocks .block").length + 1;
+	var updatedContent = $content.find('.editable').html(); 
+	var currentPosition = $content.index();
 
-	var updateData = { content:updatedContent, '_method':'put'};
+	var updateData = { 'content':updatedContent, '_method':'put'};
 	
 	if(updatePosition)
 		updateData.position = currentPosition;
@@ -198,9 +198,9 @@ broken.breakDownThePages = function($outputContainer){
 broken.loader = function(enabled){
 	
 	if(enabled)
-		$('#loader').show();
+		$('#broken-loader').show();
 	else
-		$('#loader').hide();
+		$('#broken-loader').hide();
 		
 }
 
@@ -215,7 +215,7 @@ $(function(){
 	$( ".blocks" ).sortable({
       delay: 100,
 	  handle: '.moveme',
-	  update: broken.breakPositionUpdate(event, ui);
+	  update: broken.breakPositionUpdate(event)
     });
 
 	$('.add-content').on('click', function(event){
