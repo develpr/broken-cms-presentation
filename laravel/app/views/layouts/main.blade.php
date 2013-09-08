@@ -24,7 +24,7 @@
 			  <ul class="title-area">
 			    <!-- Title Area -->
 			    <li class="name">
-			      <h2 class="brokencms"><a href="#">Broken CMS</a></h2>
+			      <h2 class="brokencms"><a href="/">Broken CMS</a></h2>
 			    </li>
 			    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 			    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -57,11 +57,12 @@
 	@yield('content')
 	
 	<div id="broken-loader" style="display:none;"><div class="panic">&nbsp;</div></div>
-		
-	@if(Auth::check())
  	<script src="/scripts/vendor/jquery-1.10.2.min.js"></script>
 	<script src="/scripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>	
     <script src="/scripts/vendor/foundation.min.js"></script>
+	
+	@if(Auth::check())
+
 	
 	<script src="/scripts/vendor/jquery-1.7.2.js"></script>
 	<script>

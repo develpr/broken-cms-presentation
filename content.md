@@ -295,7 +295,7 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 	public function store()
 	{
 		$page = new Page;
-		
+		$page->title = "a brand new page!";
 		$page->save();
 		
 		return Response::json($page, 201);
@@ -330,6 +330,7 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 	public function destroy($id)
 	{
 		Page::destroy($id);
+		return Response::json(array(), 200);
 	}
 
 ####Contents
@@ -400,7 +401,7 @@ One great feature of Laravel is that we don't need to create a seperate controll
 
 First, showing the login page:
 
-	Route::get('/login', function(){
+	Route::get('/404', function(){
 		return View::make('login');
 	});
 
@@ -444,6 +445,36 @@ And finally, the most complicated route, handling the actual viewing of a page a
 		if(Auth::check())
 			return View::make('page-edit')->with(array('page' => $page, 'contents' => $contents));
 		else
-			return View::make('edit')->with(array('page' => $page, 'contents' => $contents));
+			return View::make('page')->with(array('page' => $page, 'contents' => $contents));
 			
 	});
+
+---------
+
+###7. Bonus (HipChat)
+
+To give an idea of how simple/quick it is to add awesome (and super useful) functionality when you use Composer with Laravel, we'll quickly implement the **HipChat Broken CMS Broken Real Time Reporting** feature. 
+
+----
+
+Composer automatically downloaded the HipChat API library from github fro us, and has setup all of the autoloading (so that we can directly start using the library without having to specifically include it in our code somewhere).
+
+I think it'd be nice to notify the *Broken CMS* room on hipchat anytime a non-admin user accesses a Broken CMS page.
+
+----
+
+All we need to do is check if there is a logged in user and if not then send the message!
+
+	if(!Auth::check())
+	{
+		$room = "Broken CMS";
+		$person = "ERROR 500";
+		$message = "Attention @all - somebody is accessing a page that was created using our fabulous new CMS! The page was " .  Request::url() . "  (tableflip)";
+		
+		$token = '';
+		$hc = new HipChat\HipChat($token);
+		
+		$hc->message_room($room, $person, $message, true, 'red', 'text');
+	
+	}
+

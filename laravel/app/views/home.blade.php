@@ -19,7 +19,8 @@
 <div class="row">
 	<div class="large-12 columns">
 		<p>Below is a list of the pages currently managed by <span class="brokencms">Broken CMS</span>.</p>
-		<div id="pages">
+		<div>
+			<ul id="pages"></ul>
 		</div>
 	</div>
 </div>
@@ -29,6 +30,6 @@
 
 @section('scripts')
 <script>
-broken.breakDownThePages($('#pages'));
+broken.breakDownThePages($('#pages'), 'li');
 </script>
 @stop

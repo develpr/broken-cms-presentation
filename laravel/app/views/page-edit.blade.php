@@ -36,5 +36,39 @@
 <script>
 var broken = window.broken || {};
 broken.page = {{$page->id}};
+
+
+/**
+ *		setup the aloha editor
+ */ 
+
+Aloha.ready( function() {
+	Aloha.jQuery('.editable').aloha();
+});
+
+Aloha.bind('aloha-editable-activated', function (event, eventArgument) {
+	$editing = $(eventArgument.editable.obj[0]).parent();
+	$editing.removeClass('empty');
+});
+
+Aloha.bind('aloha-editable-deactivated', function (event, eventArgument) {
+	
+	$content = $(eventArgument.editable.obj[0])
+	$editing = $content.parent();
+	
+	if($content.attr('id') == 'title'){
+		broken.breakTitleChange($content);
+		return;
+	}
+		
+	if($.trim($content.html()).length < 0){
+		$editing.addClass('empty');
+	}else{
+		broken.breakContentUpdate($editing);
+		return;
+	}
+	
+});
+
 </script>
 @stop
