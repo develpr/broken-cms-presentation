@@ -10,13 +10,13 @@ We are going to learn about Laravel.
 ###What is Laravel?
 
  * a **modern** php framework
- * some other things (fast, users `composer`, etc)
+ * some other things (fast, uses `composer`, etc)
 
 --------
 
 ###OK, cool, now let's build a new CMS!
 
-We are going to build a ***powerful*** CMS, and we will (we will **try**) do it in the next 20 minutes, from scratch.
+We are going to build a ***powerful*** CMS, and we will (we will **try**) do it in the next 20 minutes, from <span style="text-decoration:line-through;">scratch</span> sort-of-scratch!
 
 We could talk for a long time about lots of things, but hopefully this will give an idea for the FEEL of working with Laravel and a general idea of how you can use it. 
 
@@ -44,7 +44,7 @@ We could talk for a long time about lots of things, but hopefully this will give
 
 #####and *not*...
 
-* this isn't a frontend tutorial, so I'll put together the markup, css, and js
+* we won't talk about the frontend much (this is for building the backend of the CMS application), so I'll put together the markup, css, and js
 * data model will be relatively simple for now - we can make it better later
 
 --------
@@ -56,6 +56,7 @@ We could talk for a long time about lots of things, but hopefully this will give
 Rather then creating a bunch of folders and downloading stuff and then other stuff ("stuff &#8756; stuff") we'll use `composer` to create a new Laravel instance, as [laravel.com](http://laravel.com/) tells us to do.
 
 ---
+
 *hint* 
 this takes a few minutes, so we'll start quickly!
 
@@ -91,7 +92,7 @@ In the future perhaps we can talk more about `composer` itself and look at how i
 
 ----
 
-We need to setup Laravel so that it has a database connection, and while we're at it we'll drag all of the pre-created files we have created into place (mainly css/js/html templates, but a few database seed files).
+We need to setup Laravel so that it has a database connection, and while we're at it we'll take a look at the pre-built files I've added for the sake of speed.
 
 ----
 
@@ -118,15 +119,9 @@ Let's put into place the files we need for the frontend/display layer (see [gith
 
 > `artisan` is a command line tool that comes with Laravel. It provides a bunch of handy tools that let you do things automatically that you might otherwise spend hours doing manually.
 
-Because we are in a bit of a hurry we'll go ahead and use it now to help us setup our project. 
-
----
-
 ----
 
-**But first**, I think we should go over what features we want the CMS to support so we know what to build:
-
-**we should be able to...**
+**Our CMS should be able to...**
 
  * login to the CMS
  * create pages
@@ -138,11 +133,7 @@ Because we are in a bit of a hurry we'll go ahead and use it now to help us setu
 
 ----
 
-It sounds like we will need to keep track of **`Page`**s as well as **`Content`** for the CMS, plus **`User`**s so we can control who can edit pages in the CMS.
-
-Because this entire thing is going to be built as a web application, we'll also need resourceful controllers (basically controllers that can handle normal RESTful interactions).
-
-So let's go..
+We will need to keep track of **`Page`**s as well as **`Content`** for the CMS, plus **`User`**s so we can control who can edit pages in the CMS.
 
 ----
 
@@ -155,17 +146,19 @@ So let's go..
 
 ----
 
-So now we have Controllers (which will handle the actual requests that come in from the web browser). That's exciting. I'm excited about it at least. But, `artisan` can also help us create the actual database tables that will store our Page, Content, and User data. Laravel uses *migrations* and *seeds* to handle database setup. *migrations* create the structure of the database tables, and *seeds* insert seed data (in our example, we'll use seeds to automatically generate a User for us to login with, and maybe some sample Pages and Contents).
+Now we have the controllers we need to handle the incoming requests from a user. `artisan` can also help us create the actual database tables that will store the content for our Pages, Contents, and Users. Laravel uses *migrations* and *seeds* to handle database setup. *migrations* create the structure of the database tables, and *seeds* insert seed data (in our example, we'll use seeds to automatically generate a User for us to login with, and maybe some sample Pages and Contents).
 
-    php artisan migrate:make create_users_table --table=users --create
 	php artisan migrate:make create_pages_table --table=pages --create
+    php artisan migrate:make create_users_table --table=users --create
 	php artisan migrate:make create_contents_table --table=contents --create
 
 ----
 
-OK, we've avoided writing code long enough now (hopefully around 4 minutes +- 30 seconds). Luckily we're about 25% done with our CMS now, believe it or not. We have the following tasks to finish:
+No code yet, but we already have almost the entire skeleton of our application in place. 
 
-1. We need to create the models that we'll use to interact with our database (we don't want to be writing MySQL queries)
+We still need to
+
+1. Create the models that we'll use to interact with our database (we don't want to be writing MySQL queries)
 1. The Controllers that we created earlier need to be completed so they actually do something
 1. Our database migrations need to be filled out to actually create 
 
@@ -226,6 +219,12 @@ A user might have a
 
 > *seed* data is just sample data that `artisan` wll insert for us automatically. I've included some seed data files in this example to speed things up (i.e. I've included a user *kevin* with the password *password*)
 
+----
+
+Now we need to tell Laravel to actually run the migrations, which will create our database tables as well as insert some sample data into the database for us.
+
+	php artisan migrate:install
+	php artisan migrate:refresh --seed
 
 --------
 
@@ -247,7 +246,7 @@ Laravel "gives" us a User model out of the box, so we only need to make the Cont
 	use \Eloquent;
 	
 	class Page extends Eloquent{
-	    protected $table = 'pages';
+		protected $table = 'pages';
 		
 		public function contents()
 		{
@@ -266,7 +265,7 @@ Laravel "gives" us a User model out of the box, so we only need to make the Cont
 	use \Eloquent;
 	
 	class Content extends Eloquent{
-	    protected $table = 'contents';
+		protected $table = 'contents';
 		
 		public function page()
 		{
@@ -275,12 +274,13 @@ Laravel "gives" us a User model out of the box, so we only need to make the Cont
 	}
 	
 
+--------
 
 ###5. Do even more programming - *Controllers*
 
 > *Controllers* handle requests when they come in from a user (first they are *routed* to the controller, which we'll handle in a second). They communicated between the *models* and the *views*.
 
-We already used `artisan` to automatically create the basic controller stubs. Because e want to build Broken CMS on top of an API, we want to be able to handle various web requests (GET/POST/PUT/DELETE) in our controllers. 
+We already used `artisan` to automatically create the basic controller stubs. Because we want to build Broken CMS on top of an API, we want to be able to handle various web requests (GET/POST/PUT/DELETE) in our controllers. 
 
 ----
 
@@ -324,6 +324,10 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 			$page->title = Input::get('title');
 			$page->slug = Str::slug($page->title);
 		}
+		
+		$page->save();
+		
+		return Response::json($page, 200);
 	}
 
 
@@ -332,6 +336,8 @@ We already used `artisan` to automatically create the basic controller stubs. Be
 		Page::destroy($id);
 		return Response::json(array(), 200);
 	}
+
+----
 
 ####Contents
 
@@ -401,7 +407,7 @@ One great feature of Laravel is that we don't need to create a seperate controll
 
 First, showing the login page:
 
-	Route::get('/404', function(){
+	Route::get('/500', function(){
 		return View::make('login');
 	});
 
@@ -474,7 +480,7 @@ All we need to do is check if there is a logged in user and if not then send the
 		$token = '';
 		$hc = new HipChat\HipChat($token);
 		
-		$hc->message_room($room, $person, $message, true, 'red', 'text');
+		$hc->message_room($room, $person, $message, true, 'red	', 'text');
 	
 	}
 
